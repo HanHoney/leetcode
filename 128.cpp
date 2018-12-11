@@ -1,7 +1,7 @@
 //128. Longest Consecutive Sequence 
-//×î³¤Á¬Ğø×ÓĞòÁĞ
+//æœ€é•¿è¿ç»­å­åºåˆ—
 //Hard
-//¢Ùsort	¢ÚHashSet(¿Õ¼ä»»Ê±¼ä)
+//â‘ sort	â‘¡HashSet(ç©ºé—´æ¢æ—¶é—´)
 /****************************
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 Your algorithm should run in O(n) complexity.
@@ -22,14 +22,14 @@ using namespace std;
 class Solution {
 public:
 
-	//¢Ù TC:O(nlogn)	SC:O(n)
+	//â‘  TC:O(nlogn)	SC:O(n)
 	int longestConsecutive(vector<int>& nums) {
 		if (nums.empty()) return 0;
 		sort(nums.begin(), nums.end());
 		int ret = 1;
 		int tmp = 1;
 		for (int i = 1; i < nums.size(); i++) {
-			if (nums[i] != nums[i - 1]) {	//ÖØ¸´µÄÔªËØÌø¹ı
+			if (nums[i] != nums[i - 1]) {	//é‡å¤çš„å…ƒç´ è·³è¿‡
 				if (nums[i] == nums[i - 1] + 1) {
 					tmp++;
 				}
@@ -44,14 +44,14 @@ public:
 	}
 
 
-	//TC:O(n)	SC:O(n)
+	//â‘¡ TC:O(n)	SC:O(n)
 	int longestConsecutive1(vector<int>& nums) {
 		unordered_map<int, int> map;
 		int ret = 0;
 		for (int i : nums) {
 			if (map[i] == 0) {
 				map[i] = map[i - 1] + map[i + 1] + 1;
-				map[i - map[i - 1]] = map[i];	//´«µİµ½Á½¶Ë
+				map[i - map[i - 1]] = map[i];	//ä¼ é€’åˆ°ä¸¤ç«¯
 				map[i + map[i + 1]] = map[i];
 				ret = max(ret, map[i]);
 			}
@@ -59,23 +59,6 @@ public:
 		return ret;
 	}
 
-/**
-	int longestConsecutive1(vector<int>& nums) {
-		unordered_map<int, int> map;
-		int ret = 0;
-		for (int i : nums) {
-			if (map.find(i) != map.end()) continue;
-			map[i] = 1;
-			if (map.find(i - 1) != map.end()) {
-				map[i] += map[i - 1];
-			}
-			if (map.find(i + 1) != map.end()) {
-				map[i] += map[i + 1];
-			}
-		}
-		return ret;
-	}
-**/
 	
 };
 
