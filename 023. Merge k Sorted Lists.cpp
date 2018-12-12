@@ -13,7 +13,7 @@ struct ListNode {
 
 class Solution {
 public:
-	ListNode * mergeKLists(vector<ListNode*>& lists) {
+	ListNode *mergeKLists(vector<ListNode*>& lists) {
 		if (lists.size() == 0) return nullptr;
 		ListNode* p = lists[0];
 		for (int i = 1; i < lists.size(); i++) {
