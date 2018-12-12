@@ -1,6 +1,6 @@
 //23. Merge k Sorted Lists
-//¸´ÓÃmergeTwoSortedLists
-//¿ÉÓÅ»¯£¬´Ó×î¶ÌµÄÁ½¸ölist¿ªÊ¼ºÏ²¢
+//å¤ç”¨mergeTwoSortedLists
+//å¯ä¼˜åŒ–ï¼Œä»æœ€çŸ­çš„ä¸¤ä¸ªlistå¼€å§‹åˆå¹¶
 
 #include <vector>
 using namespace std;
@@ -21,7 +21,8 @@ public:
 		}
 		return p;
 	}
-	ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+private:
+	static ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
 		if (l1 == nullptr) return l2;
 		if (l2 == nullptr) return l1;
 		ListNode headNode = ListNode(-1);
