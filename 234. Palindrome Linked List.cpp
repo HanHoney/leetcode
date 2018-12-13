@@ -1,7 +1,7 @@
 //234. Palindrome Linked List
 //Easy
 //two pointers
-//翻转后半个链表，匹配   TC:O(n)	 SC:O(1)
+//TC:O(n)  SC:O(1)
 
 
 #include <iostream>
