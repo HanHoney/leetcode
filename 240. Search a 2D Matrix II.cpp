@@ -1,7 +1,8 @@
 //240. Search a 2D Matrix II
 //Medium
-//������Ŀ��074��
+//类似题目【074】
 //TC:O(m+n)		SC:O(1)
+//由于不同行不同列的元素关系不确定，故不能使用二分查找。
 
 #include <iostream>
 #include <vector>
@@ -10,7 +11,7 @@ using namespace std;
 class Solution {
 public:
 	
-	//�����Ͻǿ�ʼ
+	//从右上角开始
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = 0, col = matrix[0].size() - 1;
@@ -22,7 +23,7 @@ public:
 		return false;
 	}
 
-	//�����½ǿ�ʼ
+	//从左下角开始
 	bool serachMatrix1(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = matrix.size() - 1, col = 0;
