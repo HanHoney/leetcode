@@ -1,7 +1,7 @@
 //207. Course Schedule
 //Medium
-//DAG(ÓĞÏòÎŞÈ¦Í¼)ÎÊÌâ BFS
-//²ÉÓÃÁÚ½ÓÁ´±í
+//DAG(æœ‰å‘æ— åœˆå›¾)é—®é¢˜ BFS
+//é‡‡ç”¨é‚»æ¥é“¾è¡¨
 
 #include <iostream>
 #include <vector>
@@ -14,17 +14,17 @@ public:
 		if (prerequisites.empty()) return true;
 		vector<unordered_set<int>> adjacencyList(numCourses, unordered_set<int>{});
 		makeGraph(numCourses, prerequisites, adjacencyList);
-		vector<int> indegree(numCourses, 0);	//Èë¶È
+		vector<int> indegree(numCourses, 0);	//å…¥åº¦
 		calculateIndegree(adjacencyList, indegree);
 		int n = numCourses;
-		while (n--) {		//Ò»¹²numCourses¸öµã£¬ÕâĞ©ÂÖ¹ıºó²ÅÄÜÈ«²¿Êä³ö
+		while (n--) {		//ä¸€å…±numCoursesä¸ªç‚¹ï¼Œè¿™äº›è½®è¿‡åæ‰èƒ½å…¨éƒ¨è¾“å‡º
 			int j = 0;
 			for (; j < numCourses; j++) {
 				if (indegree[j] == 0) break;
 			}
-			if (j == numCourses) return false;  //Ã»ÓĞÒ»¸öµãÈë¶ÈÎª0
+			if (j == numCourses) return false;  //æ²¡æœ‰ä¸€ä¸ªç‚¹å…¥åº¦ä¸º0
 			indegree[j] = -1;
-			//È¥µôÕâ¸öµãÖ®ºó£¬¸üĞÂÆäËûµãµÄÈë¶È
+			//å»æ‰è¿™ä¸ªç‚¹ä¹‹åï¼Œæ›´æ–°å…¶ä»–ç‚¹çš„å…¥åº¦
 			for (int k : adjacencyList[j]) {
 				indegree[k]--;
 			}
@@ -48,7 +48,7 @@ private:
 
 int main() {
 	int num = 5;
-	vector<pair<int, int>> pre1{ {1,0},{2,0},{2,1},{3,2},{4,3} };
+	vector<pair<int, int>> pre1{ { 1,0 },{ 2,0 },{ 2,1 },{ 3,2 },{ 4,3 } };
 	vector<pair<int, int>> pre2{ { 1,0 },{ 2,0 },{ 2,1 },{ 3,2 },{ 2,3 } };
 	Solution s;
 	cout << s.canFinish(num, pre1) << endl;
