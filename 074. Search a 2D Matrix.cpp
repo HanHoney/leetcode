@@ -10,7 +10,38 @@ using namespace std;
 class Solution {
 
 public:
-
+	
+	//两次循环，分别确定行和列。
+	//TC:O(logm+logn)
+	bool searchMatrix(vector<vector<int>>& matrix, int target) {
+		if (matrix.empty() || matrix[0].empty()) return false;
+		int m = matrix.size();
+		int n = matrix[0].size();
+		//确定row
+		int rbegin = 0, rend = m - 1;   //rowBegin
+		int row = rbegin;
+		while (rbegin <= rend) {
+			int rmid = (rbegin + rend) / 2;
+			if (matrix[rmid][0] == target) return true;
+			if (matrix[rmid][0] < target) {
+				row = rmid;
+				rbegin = rmid + 1;
+			}
+			else rend = rmid - 1;
+		}
+		//确定column
+		int cbegin = 0, cend = n - 1;    //columnBegin
+		while (cbegin <= cend) {
+			int cmid = (cbegin + cend) / 2;
+			if (matrix[row][cmid] == target) return true;
+			if (matrix[row][cmid] < target) {
+				cbegin = cmid + 1;
+			}
+			else cend = cmid - 1;
+		}
+		return false;
+	}
+	
 	//从右上角开始
 	//TC:O(m+n)
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
