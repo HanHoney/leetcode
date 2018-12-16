@@ -44,7 +44,7 @@ public:
 	
 	//从右上角开始
 	//TC:O(m+n)
-	bool searchMatrix(vector<vector<int>>& matrix, int target) {
+	bool searchMatrix1(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = 0, col = matrix[0].size() - 1;
 		while (row < matrix.size() && col >= 0) {
@@ -57,7 +57,7 @@ public:
 
 	//从左下角开始
 	//TC:O(m+n)
-	bool serachMatrix1(vector<vector<int>>& matrix, int target) {
+	bool serachMatrix2(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = matrix.size() - 1, col = 0;
 		while (row >= 0 && col < matrix[0].size()) {
