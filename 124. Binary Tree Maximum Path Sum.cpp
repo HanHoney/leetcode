@@ -1,6 +1,6 @@
 //124. Binary Tree Maximum Path Sum
 //Hard
-//µİ¹é
+//é€’å½’
 
 #include <iostream>
 #include <algorithm>
@@ -21,13 +21,13 @@ public:
 		return res;
 	}
 private:
-	//root½áµãÖ®ºóµÄ×ÓÂ·¾¶µÄ×î´óÈ¨ÖØ(µ¥Â·)
+	//rootç»“ç‚¹ä¹‹åçš„å­è·¯å¾„çš„æœ€å¤§æƒé‡(å•è·¯)
 	static int maxPathSum(TreeNode* root, int& res) {
 		if (root == nullptr) return 0;
 		int leftMax = max(maxPathSum(root->left, res), 0);
 		int rightMax = max(maxPathSum(root->right, res), 0);
-		res = max(res, leftMax + rightMax + root->val); //Ë«Â·¼Ó¸ù½Úµã¸üĞÂ×î´óÈ¨ÖØ
-		return max(leftMax, rightMax) + root->val;		//Ö»·µ»Øµ¥Ö§µÄÂ·¾¶Öµ
+		res = max(res, leftMax + rightMax + root->val); 	//åŒè·¯åŠ æ ¹èŠ‚ç‚¹æ›´æ–°æœ€å¤§æƒé‡
+		return max(leftMax, rightMax) + root->val;		//åªè¿”å›å•æ”¯çš„è·¯å¾„å€¼
 	}
 };
 
