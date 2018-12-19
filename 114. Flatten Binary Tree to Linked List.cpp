@@ -1,7 +1,7 @@
 //114. Flatten Binary Tree to Linked List
 //Medium
 //in-place
-//°´ÕÕÏÈĞò±éÀú´®Áª¼´¿É
+//æŒ‰å…ˆåºéå†é“ºå¼€æˆé“¾è¡¨
 
 #include <iostream>
 using namespace std;
@@ -15,6 +15,7 @@ struct TreeNode {
 
 class Solution {
 public:
+	//é€’å½’
 	void flatten(TreeNode* root) {
 		if (!root) return;
 		flatten(root->left);
@@ -27,6 +28,7 @@ public:
 		return;
 	}
 
+	//éé€’å½’
 	void flatten1(TreeNode* root) {
 		if (!root) return;
 		TreeNode *curr = root;
@@ -43,6 +45,7 @@ public:
 			curr = curr->right;
 		}
 	}
+	
 private:
 	static TreeNode* getRightLeafNode(TreeNode* root) {
 		if (!root) return nullptr;
