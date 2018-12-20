@@ -1,5 +1,5 @@
 //300. Longest Increasing Subsequence
-//×î³¤µİÔö×ÓĞòÁĞ(LIS)
+//æœ€é•¿é€’å¢å­åºåˆ—(LIS)
 //Medium
 
 #include <iostream>
@@ -10,7 +10,7 @@ using namespace std;
 class Solution {
 public:
 
-	//¢ÙDP
+	//â‘ DP
 	//TC:O(n^2)	SC:O(n)
 	//dp[i]=max(dp[i],dp[j]+1)&&nums[j]<nums[i]
 	//init:dp[i]=1
@@ -29,7 +29,7 @@ public:
 		return ret;
 	}
 
-	//¢Ú½ø½×°æ TC:O(nlogn)???
+	//â‘¡è¿›é˜¶ç‰ˆ TC:O(nlogn)??å¾…ç»­
 };
 
 int main() {
