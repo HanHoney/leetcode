@@ -1,5 +1,6 @@
 //121. Best Time to Buy and Sell Stock
 //Easy
+//Greedy
 //扫描，记录最低买入价格和当前卖出的最高利润
 
 #include <iostream>

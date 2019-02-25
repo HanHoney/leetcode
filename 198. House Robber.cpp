@@ -1,6 +1,7 @@
 //198. House Robber
 //Easy
 //DP
+//dp[i]=max(dp[i-1],dp[i-2]+nums[i]);
 
 #include <iostream>
 #include <vector>
@@ -12,11 +13,12 @@ public:
 	int rob(vector<int>& nums) {
 		if (nums.empty()) return 0;
 		int n = nums.size();
-		vector<int> dp(n + 1, 0);
-		dp[1] = nums[0];
-		for (int i = 1; i<n; i++) {
-			dp[i + 1] = max(dp[i - 1] + nums[i], dp[i]);
+		int prev = 0, ret = nums[0];
+		for (int i = 1; i < n; i++) {
+			int tmp = max(prev + nums[i], ret);
+			prev = ret;
+			ret = tmp;
 		}
-		return dp[n];
+		return ret;
 	}
 };
