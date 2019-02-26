@@ -12,7 +12,7 @@ struct TreeNode {
 	int val;
 	TreeNode *left;
 	TreeNode *right;
-	TreeNode(int x) :val(x), left(NULL), right(NULL) {}
+	TreeNode(int x) :val(x), left(nullptr), right(nullptr) {}
 };
 
 class Solution {
@@ -25,55 +25,58 @@ public:
 		return ret;
 	}
 	void inorderTraversal(TreeNode* root, vector<int> &ret) {
-		if (root == NULL) return;
+		if (root == nullptr) return;
 		inorderTraversal(root->left, ret);
 		ret.push_back(root->val);
 		inorderTraversal(root->right, ret);
 	}
 
 	//② 非递归
-	//一直向左走，左支无路可走再走右支
-	vector<int> inorderTraversal1(TreeNode* root) {
+	//一路向左，左无转右
+	//Morris中序遍历
+	vector<int> inorderTraversal(TreeNode* root) {
 		vector<int> ret;
 		if (!root) return ret;
-		stack<TreeNode*> st;
-		while (!st.empty() || root) {   //①没有分支可走 ②这个分支走到了头
-			if (root) {
-				st.push(root);
-				root = root->left;
+		stack<TreeNode*> s;
+		TreeNode *curr = root;
+		while (!s.empty() || curr != nullptr) {		//①没有分支可走 ②这个分支走到了头
+			if (curr) {
+				s.push(curr);
+				curr = curr->left;
 			}
 			else {
-				root = st.top();
-				ret.push_back(root->val);
-				st.pop();
-				root = root->right;
+				curr = s.top();
+				ret.push_back(curr->val);
+				s.pop();
+				curr = curr->right;
 			}
 		}
 		return ret;
 	}
 };
 
-//
-//int main() {
-//	TreeNode t1(1);
-//	TreeNode t2(2);
-//	TreeNode t3(3);
-//	TreeNode t4(4);
-//	TreeNode t5(5);
-//
-//	t1.left = &t2;
-//	t1.right = &t3;
-//	t3.left = &t4;
-//	t4.right = &t5;
-//
-//	Solution s;
-//
-//	for (auto a : s.inorderTraversal(&t1)) {
-//		cout << a << " ";
-//	}
-//	cout << endl;
-//	//2 1 4 5 3
-//
-//	system("pause");
-//	return 0;
-//}
+#if 0
+int main() {
+	TreeNode t1(1);
+	TreeNode t2(2);
+	TreeNode t3(3);
+	TreeNode t4(4);
+	TreeNode t5(5);
+
+	t1.left = &t2;
+	t1.right = &t3;
+	t3.left = &t4;
+	t4.right = &t5;
+
+	Solution s;
+
+	for (auto a : s.inorderTraversal(&t1)) {
+		cout << a << " ";
+	}
+	cout << endl;
+	//2 1 4 5 3
+
+	system("pause");
+	return 0;
+}
+#endif
