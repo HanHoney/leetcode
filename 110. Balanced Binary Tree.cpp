@@ -17,7 +17,7 @@ public:
 	bool isBalanced(TreeNode* root) {
 		return balancedHeight(root) >= 0;
 	}
-	//若不是AVL，则返回-1
+	//若不是平衡树，则返回-1
 	int balancedHeight(TreeNode* root) {
 		if (root == nullptr) return 0;
 		int left = balancedHeight(root->left);
