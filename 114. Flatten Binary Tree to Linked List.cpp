@@ -1,9 +1,10 @@
 //114. Flatten Binary Tree to Linked List
 //Medium
 //in-place
-//æŒ‰å…ˆåºéå†é“ºå¼€æˆé“¾è¡¨
+//°´ÏÈĞò±éÀúÕ¹¿ª ¢Ùµİ¹é	¢Ú·Çµİ¹é
 
 #include <iostream>
+#include <queue>
 using namespace std;
 
 struct TreeNode {
@@ -15,65 +16,57 @@ struct TreeNode {
 
 class Solution {
 public:
-	//é€’å½’
+
+	//µİ¹é
 	void flatten(TreeNode* root) {
-		if (!root) return;
+		if (root == nullptr) return;
 		flatten(root->left);
-		TreeNode *tmp = getRightLeafNode(root->left);
 		flatten(root->right);
-		if (tmp == nullptr) return;
+		if (root->left == nullptr) return;
+		TreeNode *tmp = root->left;
+		while (tmp->right) {
+			tmp = tmp->right;
+		}
 		tmp->right = root->right;
 		root->right = root->left;
-		root->left = nullptr;
-		return;
+		root->left = nullptr;		
 	}
 
-	//éé€’å½’
+
+	//·Çµİ¹é
 	void flatten1(TreeNode* root) {
-		if (!root) return;
-		TreeNode *curr = root;
-		while (curr) {
-			if (curr->left) {
-				TreeNode *prev = curr->left;
+		for (; root; root = root->right) {
+			if (root->left) {
+				TreeNode *prev = root->left;
 				while (prev->right) {
 					prev = prev->right;
 				}
-				prev->right = curr->right;
-				curr->right = curr->left;
-				curr->left = nullptr;
+				prev->right = root->right;
+				root->right = root->left;
+				root->left = nullptr;
 			}
-			curr = curr->right;
 		}
-	}
-	
-private:
-	static TreeNode* getRightLeafNode(TreeNode* root) {
-		if (!root) return nullptr;
-		while (root->right) {
-			root = root->right;
-		}
-		return root;
 	}
 };
 
-int main() {
-	TreeNode n1(1);
-	TreeNode n2(2);
-	TreeNode n3(3);
-	TreeNode n4(4);
-	TreeNode n5(5);
-	TreeNode n6(6);
-	n1.left = &n2;
-	n1.right = &n5;
-	n2.left = &n3;
-	n2.right = &n4;
-	n5.right = &n6;
-	Solution s;
-	s.flatten(&n1);
-	for (TreeNode *p = &n1; p; p = p->right) {
-		cout << p->val << " ";
-	}
-	cout << endl;
-	system("pause");
-	return 0;
-}
+//int main() {
+//	TreeNode n1(1);
+//	TreeNode n2(2);
+//	TreeNode n3(3);
+//	TreeNode n4(4);
+//	TreeNode n5(5);
+//	TreeNode n6(6);
+//	n1.left = &n2;
+//	n1.right = &n5;
+//	n2.left = &n3;
+//	n2.right = &n4;
+//	n5.right = &n6;
+//	Solution s;
+//	s.flatten(&n1);
+//	for (TreeNode *p = &n1; p; p = p->right) {
+//		cout << p->val << " ";
+//	}
+//	cout << endl;
+//	system("pause");
+//	return 0;
+//}
