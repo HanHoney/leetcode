@@ -34,7 +34,7 @@ public:
 	//② 非递归
 	//一路向左，左无转右
 	//Morris中序遍历
-	vector<int> inorderTraversal(TreeNode* root) {
+	vector<int> inorderTraversal_it(TreeNode* root) {
 		vector<int> ret;
 		if (!root) return ret;
 		stack<TreeNode*> s;

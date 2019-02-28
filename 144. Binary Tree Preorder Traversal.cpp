@@ -31,7 +31,7 @@ public:
 #endif
 	//迭代
 	//利用stack，先push right，再push left
-	vector<int> preorderTraversal(TreeNode* root) {
+	vector<int> preorderTraversal_it(TreeNode* root) {
 		vector<int> ret;
 		if (root == nullptr) return ret;
 		stack<TreeNode*> s;

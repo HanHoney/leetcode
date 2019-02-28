@@ -20,7 +20,7 @@ public:
 		return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);
 	}
 
-	bool hasPathSum(TreeNode* root, int sum){
+	bool hasPathSum_1(TreeNode* root, int sum){
 		return root && ((!root->left && !root->right&&root->val == sum) || hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val));
 	}
 };

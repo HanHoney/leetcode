@@ -23,7 +23,7 @@ public:
 	}
 
 	//�ǵݹ飬BFS
-	TreeNode *invertTree(TreeNode* root) {
+	TreeNode *invertTree_BFS(TreeNode* root) {
 		if (root == nullptr) return nullptr;
 		queue<TreeNode*> q;
 		q.push(root);

@@ -31,7 +31,7 @@ public:
 #endif
 	//迭代
 	//使用2个stack
-	vector<int> postorderTraversal(TreeNode* root) {
+	vector<int> postorderTraversal_twoStacks(TreeNode* root) {
 		vector<int> ret;
 		if (root == nullptr) return ret;
 		stack<TreeNode*> s1, s2;
@@ -55,7 +55,7 @@ public:
 	}
 
 	//使用1个stack
-	vector<int> postorderTraversal(TreeNode* root) {
+	vector<int> postorderTraversal_oneStack(TreeNode* root) {
 		vector<int> ret;
 		if (root == nullptr) return ret;
 		stack<TreeNode*> s;
