@@ -29,7 +29,7 @@ public:
 
 	//二分法，利用抽屉原理
 	//TC:O(nlogn)	SC:O(1)
-	int findDuplicate(vector<int>& nums) {
+	int findDuplicate_1(vector<int>& nums) {
 		if (nums.size() < 2) return -1;
 		int low = 1, high = nums.size() - 1;
 		while (low < high) {
