@@ -1,6 +1,6 @@
 //138. Copy List with Random Pointer
 //Medium
-//å‰‘æŒ‡offerç¬¬26é¢˜
+//½£Ö¸offerµÚ26Ìâ
 //TC:O(n)   SC:O(1)
 
 #include <iostream>
