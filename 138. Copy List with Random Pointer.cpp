@@ -25,10 +25,7 @@ public:
 		if (head == nullptr) return nullptr;
 		Node* curr = head;
 		while (curr != nullptr) {
-			Node *tmp = new Node();
-			tmp->val = curr->val;
-			tmp->next = curr->next;
-			tmp->random = nullptr;
+			Node *tmp = new Node(curr->val, curr->next, nullptr);
 			curr->next = tmp;
 			curr = tmp->next;
 		}
