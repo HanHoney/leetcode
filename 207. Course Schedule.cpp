@@ -1,7 +1,7 @@
 //207. Course Schedule
 //Medium
-//DAG(æœ‰å‘æ— åœˆå›¾)é—®é¢˜ BFS
-//é‡‡ç”¨é‚»æ¥é“¾è¡¨
+//DAG(ÓĞÏòÎŞÈ¦Í¼)ÎÊÌâ BFS
+//²ÉÓÃÁÚ½ÓÁ´±í
 
 #include <iostream>
 #include <vector>
@@ -12,33 +12,34 @@ class Solution {
 public:
 	bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
 		if (prerequisites.empty()) return true;
-		vector<unordered_set<int>> adjacencyList(numCourses, unordered_set<int>{});
-		makeGraph(numCourses, prerequisites, adjacencyList);
-		vector<int> indegree(numCourses, 0);	//å…¥åº¦
+		if (2 * (int)prerequisites.size() > numCourses*(numCourses - 1)) return false;
+		vector<unordered_set<int>> adjacencyList(numCourses);
+		makeGraph(prerequisites, adjacencyList);
+		vector<int> indegree(numCourses, 0);	//Èë¶È
 		calculateIndegree(adjacencyList, indegree);
 		int n = numCourses;
-		while (n--) {		//ä¸€å…±numCoursesä¸ªç‚¹ï¼Œè¿™äº›è½®è¿‡åæ‰èƒ½å…¨éƒ¨è¾“å‡º
-			int j = 0;
-			for (; j < numCourses; j++) {
-				if (indegree[j] == 0) break;
+		while (n--) {		//Ò»¹²numCourses¸öµã£¬ÕâĞ©ÂÖ¹ıºó²ÅÄÜÈ«²¿Êä³ö
+			int i = 0;
+			for (; i < numCourses; i++) {
+				if (indegree[i] == 0) break;
 			}
-			if (j == numCourses) return false;  //æ²¡æœ‰ä¸€ä¸ªç‚¹å…¥åº¦ä¸º0
-			indegree[j] = -1;
-			//å»æ‰è¿™ä¸ªç‚¹ä¹‹åï¼Œæ›´æ–°å…¶ä»–ç‚¹çš„å…¥åº¦
-			for (int k : adjacencyList[j]) {
-				indegree[k]--;
+			if (i == numCourses) return false;  //Ã»ÓĞÒ»¸öµãÈë¶ÈÎª0
+			indegree[i] = -1;
+			//È¥µôÕâ¸öµãÖ®ºó£¬¸üĞÂÆäËûµãµÄÈë¶È
+			for (int j : adjacencyList[i]) {
+				indegree[j]--;
 			}
 		}
 		return true;
 	}
 private:
-	static void makeGraph(int numCourses, vector<pair<int, int>>& prerequisites, vector<unordered_set<int>>& graph) {
+	static void makeGraph(vector<pair<int, int>>& prerequisites, vector<unordered_set<int>>& adjList) {
 		for (auto it : prerequisites) {
-			graph[it.second].insert(it.first);
+			adjList[it.second].insert(it.first);
 		}
 	}
-	static void calculateIndegree(vector<unordered_set<int>>& graph,vector<int>& indegree) {
-		for (auto it : graph) {
+	static void calculateIndegree(vector<unordered_set<int>>& adjList,vector<int>& indegree) {
+		for (auto it : adjList) {
 			for (int i : it) {
 				indegree[i]++;
 			}
@@ -46,6 +47,7 @@ private:
 	}
 };
 
+#if 0
 int main() {
 	int num = 5;
 	vector<pair<int, int>> pre1{ { 1,0 },{ 2,0 },{ 2,1 },{ 3,2 },{ 4,3 } };
@@ -56,3 +58,4 @@ int main() {
 	system("pause");
 	return 0;
 }
+#endif
