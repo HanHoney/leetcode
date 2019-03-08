@@ -1,49 +1,26 @@
-//3. Longest Substring Without Repeating Characters
+ï»¿//3. Longest Substring Without Repeating Characters
+//Medium
+//related topics: two pointers;sliding window
 
 #include <iostream>
 #include <string>
-#include <map>
+#include <vector>
+#include <algorithm>
 using namespace std;
-class Solution {      //Ã»ÓÃmap£¬Ë«²ãÑ­»·
+class Solution {      
 public:
 	int lengthOfLongestSubstring(string s) {
-		int maxlen = 0;
-		int cnt = 0;
-		int flag[256] = { 0 };       //ASCIIÂë+À©Õ¹ASCIIÂë
-		for(int i = 0; i < s.size(); i++) {
-			cnt = 0;
-			memset(flag, 0, sizeof(flag));   //Ã¿ÂÖÖØÖÃ
-			for (int j = i; j < s.size(); j++) {
-				if (flag[s[j]] == 0) {
-					flag[s[j]] = 1;
-					cnt++;
-				}
-				else break;
-			}
-			if (cnt > maxlen) {
-				maxlen = cnt;
-			}
-		}
-		return maxlen;
-	}
-
-	// ¡î Ò»´Î±éÀú ¡î
-	//Í¬Ê±Î¬»¤Á½¸öË÷Òı
-	int lengthOfLongestSubstring1(string s) {
-		int pos = -1;
-		int maxlen = 0;
-		int flag[256];
-		memset(flag, -1, sizeof(flag));
+		vector<int> dict(256, -1);	//ASCIIç ä¸ªæ•°æ˜¯256ï¼Œè®°å½•æ¯ä¸ªå­—ç¬¦æœ€åä¸€æ¬¡å‡ºç°çš„ä½ç½®
+		int ret = 0;
+		int left = -1;
 		for (int i = 0; i < s.size(); i++) {
-			if (flag[s[i]] != -1 && pos < flag[s[i]]) {
-				pos = flag[s[i]];     //Ìøµ½×îºóÒ»¸öÖØ¸´ÔªËØµÄÎ»ÖÃ
+			if (dict[s[i]] > left) {
+				left = dict[s[i]];
 			}
-			if (i - pos > maxlen) {
-				maxlen = i - pos;
-			}
-			flag[s[i]] = i;
+			dict[s[i]] = i;
+			ret = max(ret, i - left);
 		}
-		return maxlen;
+		return ret;
 	}
 };
 
