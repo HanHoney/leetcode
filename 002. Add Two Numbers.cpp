@@ -1,4 +1,5 @@
-// 2. Add Two Numbers
+﻿// 2. Add Two Numbers
+// Medium
 
 #include <iostream>
 using namespace std;
@@ -9,7 +10,7 @@ struct ListNode {
     ListNode *next;
 	ListNode(int x) {
 		val = x;
-		next = NULL;
+		next = nullptr;
 	}
 };
 
@@ -18,20 +19,20 @@ public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		ListNode* p = l1;
 		ListNode* q = l2;
-		ListNode* ret = new ListNode(0);
-		ListNode* r = ret;
-		int flag = 0;
-		while (p != NULL || q != NULL || flag > 0) {
+		ListNode* dummyHead = new ListNode(0);
+		ListNode* curr = dummyHead;
+		int carry = 0;
+		while (p != nullptr || q != nullptr || carry > 0) {
 			int pv = p ? p->val : 0;
 			int qv = q ? q->val : 0;
-			r->next = new ListNode(pv + qv + flag);
-			r = r->next;
-			flag = r->val / 10;
-			r->val = r->val % 10;
-			p = p ? p->next : NULL;
-			q = q ? q->next : NULL;
+			curr->next = new ListNode(pv + qv + carry);
+			curr = curr->next;
+			carry = curr->val / 10;
+			curr->val = curr->val % 10;
+			p = p ? p->next : nullptr;
+			q = q ? q->next : nullptr;
 		}
-		r->next = NULL;
-		return ret->next;
+		curr->next = nullptr;
+		return dummyHead->next;
 	}
 };
