@@ -1,4 +1,5 @@
-//6. ZigZag Conversion
+ï»¿//6. ZigZag Conversion
+//Meidum
 
 #include <iostream>
 #include <string>
@@ -9,21 +10,21 @@ class Solution {
 public:
 	string convert(string s, int numRows) {
 		int len = s.length();
-		
-		//ÎŞĞè×ö´¦ÀíµÄÇé¿ö
+
+		//æ— éœ€åšå¤„ç†çš„æƒ…å†µ
 		if (numRows <= 1 || numRows >= len) {
-			return s; 
+			return s;
 		}
-	//	int numCols = (len - 1) / (numRows - 1) + 1;
-		vector<string> str(numRows);   //Ã¿ĞĞÊÇÒ»¸östring
+		//	int numCols = (len - 1) / (numRows - 1) + 1;
+		vector<string> str(numRows);   //æ¯è¡Œæ˜¯ä¸€ä¸ªstring
 		int row = 0;
 		int direct = 1;
 		for (int i = 0; i < len; i++) {
-			if (row == 0) {            //ÏòÏÂ,ĞĞÊı¼Ó1
+			if (row == 0) {            //å‘ä¸‹,è¡Œæ•°åŠ 1
 				direct = 1;
 			}
 			if (row == numRows - 1) {
-				direct = -1;             //Ğ±ÏòÉÏ£¬ĞĞÊı¼õ1
+				direct = -1;           //æ–œå‘ä¸Šï¼Œè¡Œæ•°å‡1
 			}
 			str[row] += s[i];
 			row += direct;
@@ -35,15 +36,15 @@ public:
 		return res;
 	}
 };
-/*
+
+#if 0
 int main() {
 	string s;
 	int r;
-
 	Solution sol;
 	s = "PAYPALISHIRING";
 	r = 3;
 	cout << sol.convert(s, r)<<endl;
 	system("pause");
 }
-*/
+#endif

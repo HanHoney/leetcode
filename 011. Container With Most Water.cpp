@@ -1,34 +1,26 @@
-//11. Container With Most Water
+ï»¿//11. Container With Most Water
+//Medium
+//TC:O(N) SC:O(1)
+//æ¯æ¬¡åªæŒªåŠ¨çŸ­æ¿ï¼ˆæœ‰é¢ç§¯å˜å¤§çš„å¯èƒ½ï¼‰ã€‚æŒªåŠ¨é•¿æ¿ä¸ä¼šå¢åŠ é«˜åº¦ï¼Œåè€Œå‡å°‘å®½åº¦ï¼Œæ— æ³•æ‰¾åˆ°æ›´å¤§çš„é¢ç§¯ã€‚
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
-class Solution {   //±©Á¦
-public:
-	int maxArea(vector<int>& height) {
-		int ret = 0;
-		int size = height.size();
-		for (int i = 0; i < size; i++) {
-			for (int j = i + 1; j < size; j++) {
-				int h = height[i] < height[j] ? height[i] : height[j];
-				int tmp = h * (j - i);
-				ret = tmp > ret ? tmp : ret;
-			}
-		}
-		return ret;
-	}
 
-	int maxArea1(vector<int>& height) {    //Ò»´ÎÑ­»·£¬Ã¿´ÎÖ»Å²¶¯¶Ì°å£¨ÓĞÃæ»ı±ä´óµÄ¿ÉÄÜ£©¡£Å²¶¯³¤°å²»»áÔö¼Ó¸ß¶È£¬·´¶ø¼õÉÙ¿í¶È£¬ÎŞ·¨ÕÒµ½¸ü´óµÄÃæ»ı¡£
+class Solution {   
+public:
+	
+	int maxArea1(vector<int>& height) {    
 		int ret = 0;
 		int left = 0, right = height.size() - 1;
-		while (right > left) {
-			int cmp = height[right] - height[left];
-			int tmp = (cmp < 0 ? height[right] : height[left])*(right - left);
-			ret = tmp > ret ? tmp : ret;
-			if (cmp < 0) {
-				right--;
+		while (left < right) {
+			int curr = min(height[left], height[right])*(right - left);
+			ret = max(ret, curr);
+			if (height[left] < height[right]) {
+				left++;
 			}
-			else left++;
+			else right--;
 		}
 		return ret;
 	}
