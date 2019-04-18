@@ -25,7 +25,9 @@ public:
 		auto it = hash.find(key);
 		if (it == hash.end()) return -1;
 		cache.splice(cache.begin(), cache, it->second);
-		return it->second->second;
+		return cache.front().second;
+//		return cache.begin()->second;
+//		return it->second->second;
 	}
 	void put(int key, int value) {
 		auto it = hash.find(key);
