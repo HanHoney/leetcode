@@ -11,35 +11,40 @@ using namespace std;
 class Solution {
 public:
 	vector<int> topKFrequent(vector<int>& nums, int k) {
-		if (k >= nums.size()) return nums;
-		vector<int> ret;
 		unordered_map<int, int> map;
-		priority_queue<pair<int, int>> heap;
-		for (auto i : nums) {
-			map[i]++;
+		for (int num : nums) {
+			++map[num];
 		}
+		//小根堆，按照pair.first排序，即first代表频率。
+		priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 		for (auto it : map) {
-			heap.push(make_pair(it.second, it.first));
-	//		heap.push({ it.second,it.first });
+			if (pq.size() < k) {
+				pq.push(make_pair(it.second, it.first));
+			}
+			else if (pq.size() == k && it.second > pq.top().first) {
+				pq.pop();
+				pq.push(make_pair(it.second, it.first));
+			}
 		}
-		for (int i = 0; i < k; i++) {
-			ret.push_back(heap.top().second);
-			heap.pop();
+		vector<int> ret;
+		while (!pq.empty()) {
+			ret.push_back(pq.top().second);
+			pq.pop();
 		}
 		return ret;
 	}
 };
 
-
-int main() {
-	vector<int> nums{ 1,1,2,2,2,3 };
-	int k = 2;
-	Solution s;
-	vector<int> res = s.topKFrequent(nums, k);
-	for (auto n : res) {
-		cout << n << " ";
-	}
-	cout << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ 1,1,2,2,2,3 };
+//	int k = 2;
+//	Solution s;
+//	vector<int> res = s.topKFrequent(nums, k);
+//	for (auto n : res) {
+//		cout << n << " ";
+//	}
+//	cout << endl;
+//	system("pause");
+//	return 0;
+//}

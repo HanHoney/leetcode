@@ -1,6 +1,6 @@
 //124. Binary Tree Maximum Path Sum
 //Hard
-//é€’å½’
+//µÝ¹é
 
 #include <iostream>
 #include <algorithm>
@@ -16,35 +16,38 @@ struct TreeNode {
 class Solution {
 public:
 	int maxPathSum(TreeNode* root) {
+		if (root == nullptr) return 0;
 		int res = INT_MIN;
 		maxPathSum(root, res);
 		return res;
 	}
 private:
-	//rootç»“ç‚¹ä¹‹åŽçš„å­è·¯å¾„çš„æœ€å¤§æƒé‡(å•è·¯)
+	//root½áµãÖ®ºóµÄ×ÓÂ·¾¶µÄ×î´óÈ¨ÖØ(µ¥Â·)
+	//res¿ÉÒÔ×÷ÎªÒýÓÃ´«Öµ£¬Ò²¿ÉÒÔµ¥¶ÀÉùÃ÷±äÁ¿
 	static int maxPathSum(TreeNode* root, int& res) {
 		if (root == nullptr) return 0;
 		int leftMax = max(maxPathSum(root->left, res), 0);
 		int rightMax = max(maxPathSum(root->right, res), 0);
-		res = max(res, leftMax + rightMax + root->val); 	//åŒè·¯åŠ æ ¹èŠ‚ç‚¹æ›´æ–°æœ€å¤§æƒé‡
-		return max(leftMax, rightMax) + root->val;		//åªè¿”å›žå•æ”¯çš„è·¯å¾„å€¼
+		res = max(res, leftMax + rightMax + root->val);		//Ë«Â·¼Ó¸ù½Úµã¸üÐÂ×î´óÈ¨ÖØ
+		return max(leftMax, rightMax) + root->val;			//Ö»·µ»Øµ¥Ö§µÄÂ·¾¶Öµ
 	}
 };
 
-int main() {
-	TreeNode n0(10);
-	TreeNode n1(9);
-	TreeNode n2(20);
-	TreeNode n3(15);
-	TreeNode n4(7);
-	TreeNode n5(9);
-	n0.left = &n1;
-	n0.right = &n2;
-	n2.left = &n3;
-	n2.right = &n4;
-	n4.left = &n5;
-	Solution s;
-	cout << s.maxPathSum(&n0) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	TreeNode n0(10);
+//	TreeNode n1(9);
+//	TreeNode n2(20);
+//	TreeNode n3(15);
+//	TreeNode n4(7);
+//	TreeNode n5(9);
+//	n0.left = &n1;
+//	n0.right = &n2;
+//	n2.left = &n3;
+//	n2.right = &n4;
+//	n4.left = &n5;
+//	Solution s;
+//	cout << s.maxPathSum(&n0) << endl;
+//	system("pause");
+//	return 0;
+//}
