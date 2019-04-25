@@ -11,12 +11,16 @@ using namespace std;
 
 class Solution {
 public:
+	// DFS => TLE
+	// DP  => AC
 	bool wordBreak(string s, vector<string>& wordDict) {
-		//dp[i]:以第i位结尾的字符串是否可以生成
+		if (s.empty() || wordDict.empty()) return false;
 		vector<bool> dp(s.size() + 1, false);
 		dp[0] = true;
-		for (int i = 1; i <= s.size(); i++) {
-			for (int j = i - 1; j >= 0; j--) {
+		//dp[i] s[0..i-1]是否可以被拆分
+		//dp[i]= dp[j] && s[j..i-1]∈wordDict,j∈[0,i-1] 这i个结果取或
+		for (int i = 1; i <= s.size(); ++i) {
+			for (int j = i - 1; j >= 0; --j) {
 				if (dp[j] && find(wordDict.begin(), wordDict.end(), s.substr(j, i - j)) != wordDict.end()) {
 					dp[i] = true;
 					break;

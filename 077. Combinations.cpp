@@ -10,24 +10,24 @@ using namespace std;
 
 class Solution {
 public:
-	vector<vector<int>> combine(int n, int k) {		
-		vector<vector<int>> ret;	//最终结果
-		if (n < k || k <= 0) return ret;
-		vector<int> path;			//中间结果
-		dfs(ret, path, 1, n, k);
+	vector<vector<int>> combine(int n, int k) {
+		vector<vector<int>> ret;
+		if (k > n || k <= 0) return ret;
+		vector<int> path;
+		dfs(ret, path, 0, k, n);
 		return ret;
 	}
 
 private:
-	void dfs(vector<vector<int>> &ret, vector<int> &path, int curr, int n, int k) {
-		if (k == 0) {					//找到一个合法解
-			ret.push_back(path);
+	void dfs(vector<vector<int>>& ret, vector<int>& path, int prev, int k, int n) {
+		if (k == 0) {
+			ret.emplace_back(path);
 			return;
 		}
-		for (int i = curr; i <= n - k + 1; i++) {   //剪枝，i <= n 也可以
-			path.push_back(i);			//执行扩展动作
-			dfs(ret, path, i + 1, n, k - 1);
-			path.pop_back();			//撤销动作
+		for (int i = prev + 1; i <= n - k + 1; ++i) {	//注意这个范围，剪枝，否则会TLE
+			path.emplace_back(i);
+			dfs(ret, path, i, k - 1, n);
+			path.pop_back();
 		}
 	}
 };

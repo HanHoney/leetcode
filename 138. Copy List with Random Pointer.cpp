@@ -23,30 +23,26 @@ class Solution {
 public:
 	Node* copyRandomList(Node* head) {
 		if (head == nullptr) return nullptr;
-		Node* curr = head;
+		Node *curr = head;
 		while (curr != nullptr) {
-			Node *tmp = new Node(curr->val, curr->next, nullptr);
-			curr->next = tmp;
-			curr = tmp->next;
+			Node *copy = new Node(curr->val, curr->next, nullptr);
+			curr->next = copy;
+			curr = copy->next;
 		}
+		curr = head;
+		while (curr != nullptr) {   //结点个数为偶数
+			if (curr->random != nullptr) {
+				curr->next->random = curr->random->next;
+			}
+			curr = curr->next->next;
+		}
+		Node *copyHead = head->next;
 		curr = head;
 		while (curr != nullptr) {
 			Node *tmp = curr->next;
-			if (curr->random) {
-				tmp->random = curr->random->next;
-			}
-			curr = tmp->next;
-		}
-		curr = head;
-		Node *copyHead = head->next;
-		while (curr != nullptr) {
-			Node* tmp = curr->next;
 			curr->next = tmp->next;
 			if (curr->next) {
 				tmp->next = curr->next->next;
-			}
-			else {
-				tmp->next = nullptr;
 			}
 			curr = curr->next;
 		}
