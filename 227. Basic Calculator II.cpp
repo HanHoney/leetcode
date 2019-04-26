@@ -36,7 +36,9 @@ public:
 					stk.pop();
 					stk.push(num);
 				}
-				sign = s[i];
+				if (i != s.size() - 1) {      //没有条件判断也无所谓，这样逻辑上更完整。
+					sign = s[i];
+				}
 				tmp = 0;
 			}
 		}
