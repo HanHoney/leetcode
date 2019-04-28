@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-
+#if 0
 	vector<vector<int>> permute_1(vector<int>& nums) {
 		vector<vector<int>> ret;
 		vector<int> curr = nums;
@@ -19,7 +19,6 @@ public:
 		}
 		return ret;
 	}
-
 	bool nextPermutation(vector<int>& curr) {
 		for (int i = curr.size() - 2; i >= 0; i--)  {
 			if (curr[i + 1] > curr[i]) {             //从后遍历，寻找第一个可以交换的位置
@@ -34,6 +33,7 @@ public:
 		}
 		return false;
 	}
+#endif
 
 	vector<vector<int>> permute(vector<int>& nums) {
 		vector<vector<int>> ret;
