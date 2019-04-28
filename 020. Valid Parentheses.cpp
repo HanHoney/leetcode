@@ -4,49 +4,28 @@
 #include <vector>
 #include <string>
 #include <stack>
-#include <unordered_map>
+#include <map>
 using namespace std;
 
 class Solution {
 public:
 
-	/*******
-	bool isValid1(string s) {
-		int n = s.size();
-		if (n % 2 != 0) return false;    //单数个符号
-		stack<char> st;
-		for (int i = 0; i < s.size(); i++) {
-			if (s[i]=='('||s[i]=='['||s[i]=='{') {
-				st.push(s[i]);
+	bool isValid(string s) {
+		if (s.empty()) return true;
+		if (s.size() & 1) return false;
+		map<char, char> map = { {')','('},{']','['},{'}','{'} };
+		stack<char> stk;
+		for (char ch : s) {
+			if (ch == '(' || ch == '[' || ch == '{') {
+				stk.push(ch);
 			}
 			else {
-				if (st.empty()) return false;     //【注】保证stack中有元素
-				char tmp = st.top();
-				if ((tmp == '('&&s[i] == ')') || (tmp == '['&&s[i] == ']') || (tmp == '{'&&s[i] == '}')) {
-					st.pop();
-					continue;
-				}
-				else {
+				if (stk.empty() || stk.top() != map[ch]) {
 					return false;
 				}
+				stk.pop();
 			}
 		}
-		return st.empty();
-	}
-	****************/
-
-	bool isValid(string s) {
-		int n = s.size();
-		if (n % 2 == 1) return false;
-		stack<char> st;
-		unordered_map<char, char> m = { {')','('},{']','['},{'}','{'} };
-		for (auto c : s) {
-			if (m.find(c) != m.end()) {
-				if (st.empty()||st.top()!=m[c]) return false;
-				else st.pop();
-			}
-			else st.push(c);
-		}
-		return st.empty();
+		return stk.empty();
 	}
 };

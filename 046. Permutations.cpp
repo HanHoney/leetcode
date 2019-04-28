@@ -9,7 +9,7 @@ using namespace std;
 class Solution {
 public:
 
-	vector<vector<int>> permute(vector<int>& nums) {
+	vector<vector<int>> permute_1(vector<int>& nums) {
 		vector<vector<int>> ret;
 		vector<int> curr = nums;
 		sort(curr.begin(), curr.end());
@@ -33,5 +33,24 @@ public:
 			}
 		}
 		return false;
+	}
+
+	vector<vector<int>> permute(vector<int>& nums) {
+		vector<vector<int>> ret;
+		if (nums.empty()) return ret;
+		sort(nums.begin(), nums.end());
+		dfs(ret, 0, nums);
+		return ret;
+	}
+	void dfs(vector<vector<int>>& ret, int index, vector<int>& nums) {
+		if (index == nums.size()) {
+			ret.emplace_back(nums);
+			return;
+		}
+		for (int i = index; i < nums.size(); ++i) {
+			swap(nums[index], nums[i]);
+			dfs(ret, index + 1, nums);
+			swap(nums[index], nums[i]);
+		}
 	}
 };

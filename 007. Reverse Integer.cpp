@@ -5,25 +5,31 @@ using namespace std;
 class Solution {
 public:
 	int reverse(int x) {
-		int ret = 0;
-		while (x) {
-			int tmp = x % 10;
-			if (ret > INT_MAX/10 || ret < INT_MIN/10) {   //-2^31~2^31-1
-				return 0;
-			}
-			ret = ret * 10 + tmp;
-			x /= 10;
+		bool negative = x < 0;
+		long long llx = x;
+		llx = abs(llx);
+		long long ret = 0;
+		while (llx) {
+			ret = ret * 10 + llx % 10;
+			llx /= 10;
 		}
+		if (negative) {
+			ret = -ret;
+		}
+		if (ret > INT_MAX || ret < INT_MIN) return 0;
 		return ret;
 	}
 };
-//int main() {
-//	int x;
-//	Solution s;
-//	cout << INT_MAX <<endl;
-//	cout << INT_MIN << endl;
-//	cout << endl;
-//	while (cin >> x) {
-//		cout << s.reverse(x) << endl;
-//	}
-//}
+
+#if 0
+int main() {
+	int x;
+	Solution s;
+	cout << INT_MAX <<endl;
+	cout << INT_MIN << endl;
+	cout << endl;
+	while (cin >> x) {
+		cout << s.reverse(x) << endl;
+	}
+}
+#endif

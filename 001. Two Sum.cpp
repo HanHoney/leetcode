@@ -1,4 +1,4 @@
-// 1. Two Sum
+ï»¿// 1. Two Sum
 // Easy
 
 #include <iostream>
@@ -11,9 +11,10 @@ using namespace std;
 class Solution {
 public:
 
-	//Ë«Ö¸Õë+sort
+#if 0
+	//åŒæŒ‡é’ˆ+sort
 	//TC:O(nlogn)	SC:O(n)
-	vector<int> twoSum(vector<int>& nums, int target) {
+	vector<int> twoSum_1(vector<int>& nums, int target) {
 		vector<int> tmp = nums;
 		sort(tmp.begin(),tmp.end());
 		int len = tmp.size();
@@ -31,38 +32,35 @@ public:
 		}
 		vector<int> ret;
 		for (int i = 0; i < len; i++) {
-			if (nums[i] == tmp[left] || nums[i] == tmp[right]) {      //±£Ö¤Ã¿¸öË÷ÒıÖ»Ê¹ÓÃÒ»´Î
+			if (nums[i] == tmp[left] || nums[i] == tmp[right]) {      //ä¿è¯æ¯ä¸ªç´¢å¼•åªä½¿ç”¨ä¸€æ¬¡
 				ret.push_back(i);
 			}
 			if (ret.size() == 2) {
 				break;
 			}
-		}   //forÑ­»·Ö±½Ó±£Ö¤Ë÷ÒıË³Ğò
+		}   //forå¾ªç¯ç›´æ¥ä¿è¯ç´¢å¼•é¡ºåº
 		return ret;
 	}
+#endif
 
-	//¹şÏ£±í
+	//å“ˆå¸Œè¡¨
 	//TC:O(n)	SC:O(n)
-	vector<int> twoSum1(vector<int>& nums, int target) {
-		unordered_map<int, int> map;	//´æ(val,idx)
+	vector<int> twoSum(vector<int>& nums, int target) {
 		vector<int> ret;
-		for (int i = 0; i < nums.size(); i++) {
-			map[nums[i]] = i;
-		}
-		for (int i = 0; i < nums.size(); i++) {
-			int toFind = target - nums[i];
-			auto it = map.find(toFind);
-			if (it != map.end() && it->second > i) {
-				ret.push_back(i);
-				ret.push_back(it->second);
-				return ret;
+		unordered_map<int, int> umap;		//(val,index)
+		for (int i = 0; i < nums.size(); ++i) {
+			if (umap.find(target - nums[i]) != umap.end()) {
+				ret.emplace_back(umap[target - nums[i]]);
+				ret.emplace_back(i);
+				break;
 			}
+			umap[nums[i]] = i;
 		}
 		return ret;
 	}
 };
 
-
+#if 0
 int main() {
 	vector<int> numbers = {2,11,7,15};
 	int tar = 18;
@@ -73,3 +71,4 @@ int main() {
 	system("pause");
 	return 0;
 }
+#endif

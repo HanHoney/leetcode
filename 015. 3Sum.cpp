@@ -10,43 +10,41 @@ class Solution {
 public:
 	vector<vector<int>> threeSum(vector<int>& nums) {
 		vector<vector<int>> ret;
-		if (nums.size() < 3)
-			return ret;
-		sort(nums.begin(), nums.end());             //将复杂度降至O(n^2)
-		if (nums.front() > 0 || nums.back() < 0)    //所有元素同号，没有符合要求的三元组
-			return ret;
 		int n = nums.size();
-		for (int i = 0; i < n - 2; i++) {
-			if (i > 0 && nums[i] == nums[i - 1])    //相同的元素，只需要使用第一个
-				continue;
-			int a = nums[i];
-			int low = i + 1;
-			int high = n - 1;
-			while (low < high) {
-				int b = nums[low];
-				int c = nums[high];
-				if (a + b + c == 0) {
-					ret.push_back({a,b,c});
-					while (low < n - 1 && nums[low + 1] == nums[low]) {    //跳过相同的元素
-						low++;
+		if (n < 3) {
+			return ret;
+		}
+		sort(nums.begin(), nums.end());
+		if (nums.front() > 0 || nums.back() < 0) {
+			return ret;
+		}
+		for (int i = 0; i < n - 2; ++i) {
+			if (i > 0 && nums[i] == nums[i - 1]) continue;
+			int j = i + 1;
+			int k = n - 1;
+			while (j < k) {
+				if (nums[i] + nums[j] + nums[k] == 0) {
+					ret.emplace_back(vector<int>{nums[i], nums[j], nums[k]});
+					++j;
+					--k;
+					while (j < k&&nums[j] == nums[j - 1]) {
+						++j;
 					}
-					while (high > i + 1 && nums[high - 1] == nums[high]) {
-						high--;
+					while (j < k&&nums[k] == nums[k + 1]) {
+						--k;
 					}
-					low++;
-					high--;
 				}
-				else if (a + b + c > 0) {
-					while (high > i + 1 && nums[high - 1] == nums[high]) {
-						high--;
+				else if (nums[i] + nums[j] + nums[k] > 0) {
+					--k;
+					while (j < k&&nums[k] == nums[k + 1]) {
+						--k;
 					}
-					high--;
 				}
 				else {
-					while (low < n - 1 && nums[low + 1] == nums[low]) {    //跳过相同的元素
-						low++;
+					++j;
+					while (j < k&&nums[j] == nums[j - 1]) {
+						++j;
 					}
-					low++;
 				}
 			}
 		}
@@ -54,17 +52,17 @@ public:
 	}
 };
 
-
-int main() {
-	vector<int> nums{ -1,0,1,2,-1,-4 };
-	Solution s;
-	vector<vector<int>> result = s.threeSum(nums);
-	for (auto &v : result) {
-		for (auto n : v) {
-			cout << n << " ";
-		}
-		cout << endl;
-	}
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ -1,0,1,2,-1,-4 };
+//	Solution s;
+//	vector<vector<int>> result = s.threeSum(nums);
+//	for (auto &v : result) {
+//		for (auto n : v) {
+//			cout << n << " ";
+//		}
+//		cout << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
