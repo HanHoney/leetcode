@@ -1,6 +1,6 @@
 //23. Merge k Sorted Lists
-//å¤ç”¨mergeTwoSortedLists
-//å¯ä¼˜åŒ–ï¼Œä»æœ€çŸ­çš„ä¸¤ä¸ªlistå¼€å§‹åˆå¹¶
+//¸´ÓÃmergeTwoSortedLists
+//¿ÉÓÅ»¯£¬´Ó×î¶ÌµÄÁ½¸ölist¿ªÊ¼ºÏ²¢
 
 #include <vector>
 using namespace std;
@@ -13,33 +13,30 @@ struct ListNode {
 
 class Solution {
 public:
-	ListNode *mergeKLists(vector<ListNode*>& lists) {
-		if (lists.size() == 0) return nullptr;
-		ListNode* p = lists[0];
-		for (int i = 1; i < lists.size(); i++) {
-			p = mergeTwoLists(p, lists[i]);
+	ListNode* mergeKLists(vector<ListNode*>& lists) {
+		ListNode *p = nullptr;
+		for (auto list : lists) {
+			p = mergeTwoLists(p, list);
 		}
 		return p;
 	}
-private:
-	static ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 		if (l1 == nullptr) return l2;
 		if (l2 == nullptr) return l1;
-		ListNode headNode = ListNode(-1);
-		ListNode *cur = &headNode;
+		ListNode *head = new ListNode(0);
+		ListNode *curr = head;
 		while (l1&&l2) {
-			if (l1->val < l2->val) {
-				cur->next = l1;
-				cur = cur->next;
+			if (l1->val <= l2->val) {
+				curr->next = l1;
 				l1 = l1->next;
 			}
 			else {
-				cur->next = l2;
-				cur = cur->next;
+				curr->next = l2;
 				l2 = l2->next;
 			}
+			curr = curr->next;
 		}
-		cur->next = l1 != nullptr ? l1 : l2;
-		return headNode.next;
+		curr->next = l1 ? l1 : l2;
+		return head->next;
 	}
 };

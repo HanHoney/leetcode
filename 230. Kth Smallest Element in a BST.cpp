@@ -49,17 +49,17 @@ public:
 class Solution_1 {
 public:
 	int kthSmallest(TreeNode* root, int k) {
-		if (root == nullptr) return -1;
 		vector<TreeNode*> nodes;
-		inorder(root, nodes);
+		helper(root, k, nodes);
 		return nodes[k - 1]->val;
 	}
-private:
-	static void inorder(TreeNode* root, vector<TreeNode*>& nodes) {
+	void helper(TreeNode* root, int k, vector<TreeNode*>& nodes) {
 		if (root == nullptr) return;
-		inorder(root->left, nodes);
-		nodes.push_back(root);
-		inorder(root->right, nodes);
+		helper(root->left, k, nodes);
+		if (nodes.size() >= k) return;
+		nodes.emplace_back(root);
+		if (nodes.size() >= k) return;
+		helper(root->right, k, nodes);
 	}
 };
 
