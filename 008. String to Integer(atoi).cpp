@@ -7,44 +7,44 @@ using namespace std;
 class Solution {
 public:
 	int myAtoi(string str) {
-		int len = str.length();
-		bool neg = false;
-		bool flag = false;
-		int ret = 0;
-		if (len == 0) {
-			return 0;
-		}
+		if (str.empty()) return 0;
+		bool negative = false;
 		int i = 0;
-		for (; i < len; i++) {
+		while (i < str.size()) {
 			if (str[i] != ' ') {
 				break;
 			}
+			++i;
 		}
+		if (i == str.size()) return 0;
 		if (str[i] == '-') {
-			neg = true;
-			i++;
+			negative = true;
+			++i;
 		}
-		else if (str[i] == '+') {     //注意此处的逻辑。正负号连续出现非法，只读入一个操作符。
-			i++;
+		else if (str[i] == '+') {
+			++i;
 		}
-		if (str[i]<'0'&&str[i]>'9') {
+		if (!isdigit(str[i])) {
 			return 0;
 		}
-		while (str[i] >= '0'&&str[i] <= '9'&&i < len) {
-			int digit = str[i++] - '0';
-			if (neg) {
-				if (-ret < (INT_MIN + digit) / 10) {    //判断溢出情况
-					return INT_MIN;
-				}
+		long long ret = 0;
+		while (i < str.size() && isdigit(str[i])) {
+			ret = 10 * ret + str[i] - '0';
+			++i;
+			if (ret / 10 > INT_MAX) {
+				break;
 			}
-			else {
-				if (ret > (INT_MAX - digit) / 10) {
-					return INT_MAX;
-				}
-			}
-			ret = ret * 10 + digit;
 		}
-		return neg ? -ret : ret;
+		if (negative) {
+			ret = -ret;
+		}
+		if (ret < INT_MIN) {
+			return INT_MIN;
+		}
+		if (ret > INT_MAX) {
+			return INT_MAX;
+		}
+		return ret;
 	}
 };
 /*

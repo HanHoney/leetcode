@@ -15,20 +15,20 @@ struct ListNode {
 class Solution {
 public:
 	ListNode * detectCycle(ListNode *head) {
-		if (head == NULL || head->next == NULL) return NULL;
-		ListNode *p = head, *q = head;
-		while (q&&q->next) {
-			p = p->next;
-			q = q->next->next;
-			if (p == q) {		//有圈，继续找开始位置
-				q = head;
-				while (p != q) {
-					p = p->next;
-					q = q->next;
+		if (head == nullptr || head->next == nullptr) return nullptr;
+		ListNode *slow = head, *fast = head;
+		while (fast&&fast->next) {
+			slow = slow->next;
+			fast = fast->next->next;
+			if (slow == fast) {
+				fast = head;
+				while (slow != fast) {
+					slow = slow->next;
+					fast = fast->next;
 				}
-				return p;
+				return slow;
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 };
