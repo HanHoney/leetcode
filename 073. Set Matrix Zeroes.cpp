@@ -10,6 +10,9 @@ class Solution {
 public:
 
 	//SC:O(1)
+	//把每一个0都传递到第一行和第一列
+	//matrix[0][j]记录第一行信息，matrix[0][0]记录行信息
+	//matrix[i][0]记录第一列信息，matrix[0][0]不记录列信息，列信息单独记录
 	void setZeroes(vector<vector<int>>& matrix) {
 		int m = matrix.size();
 		int n = matrix[0].size();
@@ -59,7 +62,7 @@ public:
 	}
 
 	//SC:O(m+n)
-	void setZeroes1(vector<vector<int>>& matrix) {
+	void setZeroes_1(vector<vector<int>>& matrix) {
 		int m = matrix.size();
 		int n = matrix[0].size();
 		vector<bool> row(m, false);

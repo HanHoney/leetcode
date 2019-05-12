@@ -49,20 +49,7 @@ public:
 		if (s3 == s4) return true;
 		return false;
 	}
-	/****
-	bool isPlalindrome(string s1, string s2) {
-		if (s1.size() != s2.size()) return false;
-		int len = s1.size();
-		char c = s1[0];
-		for (int i = 0; i < len; i++) {
-			if (s2[i] == c) {
-				if (s2.substr(i, len - i) == s1.substr(0, len - i) && s2.substr(0, i) == s1.substr(len - i, i))
-					return true;
-			}
-		}
-		return false;
-	}
-	***/
+	
 
 	//Time:20ms ¸ü¿ì¡¾best¡¿
 	vector<vector<string>> groupAnagrams(vector<string>& strs) {

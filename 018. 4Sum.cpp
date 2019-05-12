@@ -13,11 +13,12 @@ public:
 		vector<vector<int>> ret;
 		if (nums.size() < 4) return ret;
 		sort(nums.begin(), nums.end());
-		if (4 * nums.front() > target || 4 * nums.back() < target) return ret;
-		for (int i = 0; i < nums.size() - 3; i++) {
+		//用除法，乘法可能左边超过int范围
+		if (nums.front() > target / 4 || nums.back() < target / 4) return ret;
+		for (int i = 0; i < nums.size() - 3; ++i) {
 			if (i > 0 && nums[i] == nums[i - 1]) continue;
 			int a = nums[i];
-			for (int j = i + 1; j < nums.size() - 2; j++) {
+			for (int j = i + 1; j < nums.size() - 2; ++j) {
 				if (j > i + 1 && nums[j] == nums[j - 1]) continue;
 				int b = nums[j];
 				int k = j + 1;
@@ -28,18 +29,18 @@ public:
 					int sum = a + b + c + d;
 					if (sum == target) {
 						ret.push_back({ a,b,c,d });
-						k++;
-						l--;
-						while (nums[k] == nums[k - 1] && k < l) k++;
-						while (nums[l] == nums[l + 1] && k < l) l--;
+						++k;
+						--l;
+						while (nums[k] == nums[k - 1] && k < l) ++k;
+						while (nums[l] == nums[l + 1] && k < l) --l;
 					}
 					else if (sum<target) {
-						k++;
-						while (nums[k] == nums[k - 1] && k < l) k++;
+						++k;
+						while (nums[k] == nums[k - 1] && k < l) ++k;
 					}
 					else {
-						l--;
-						while (nums[l] == nums[l + 1] && k < l) l--;
+						--l;
+						while (nums[l] == nums[l + 1] && k < l) --l;
 					}
 				}
 			}

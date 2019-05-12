@@ -10,14 +10,15 @@ using namespace std;
 class Solution {
 
 public:
-	
-	//ä¸¤æ¬¡å¾ªçŽ¯ï¼Œåˆ†åˆ«ç¡®å®šè¡Œå’Œåˆ—ã€‚
+
+	//Á½´ÎÑ­»·£¬·Ö±ðÈ·¶¨ÐÐºÍÁÐ¡£
 	//TC:O(logm+logn)
+
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int m = matrix.size();
 		int n = matrix[0].size();
-		//ç¡®å®šrow
+		//È·¶¨row
 		int rbegin = 0, rend = m - 1;   //rowBegin
 		int row = rbegin;
 		while (rbegin <= rend) {
@@ -29,7 +30,7 @@ public:
 			}
 			else rend = rmid - 1;
 		}
-		//ç¡®å®šcolumn
+		//È·¶¨column
 		int cbegin = 0, cend = n - 1;    //columnBegin
 		while (cbegin <= cend) {
 			int cmid = (cbegin + cend) / 2;
@@ -41,8 +42,8 @@ public:
 		}
 		return false;
 	}
-	
-	//ä»Žå³ä¸Šè§’å¼€å§‹
+
+	//´ÓÓÒÉÏ½Ç¿ªÊ¼
 	//TC:O(m+n)
 	bool searchMatrix1(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
@@ -55,7 +56,7 @@ public:
 		return false;
 	}
 
-	//ä»Žå·¦ä¸‹è§’å¼€å§‹
+	//´Ó×óÏÂ½Ç¿ªÊ¼
 	//TC:O(m+n)
 	bool serachMatrix2(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
@@ -69,7 +70,7 @@ public:
 	}
 };
 
-
+#if 0
 int main() {
 	vector<vector<int>> vec1{ {10,12},{15,20},{21,26} };
 	vector<vector<int>> vec2{ {10,12},{15,20},{23,26} };
@@ -84,3 +85,4 @@ int main() {
 	system("pause");
 	return 0;
 }
+#endif
