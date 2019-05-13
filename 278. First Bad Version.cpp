@@ -11,7 +11,7 @@ public:
 	int firstBadVersion(int n) {
 		int left = 1, right = n;
 		while (left < right) {
-			int mid = left + (right - left) / 2;    //(left+right)/2 »áÒç³ö
+			int mid = left + (right - left) / 2;    //(left+right)/2 ä¼šæº¢å‡º
 			if (isBadVersion(mid)) {
 				right = mid;
 			}
