@@ -13,11 +13,10 @@ class Solution {
 public:
 	ListNode* partition(ListNode* head, int x) {
 		if (head == nullptr || head->next == nullptr) return head;
-		ListNode dummy1(-1);
-		ListNode dummy2(-1);
-		ListNode *curr = head;
-		ListNode *p = &dummy1, *q = &dummy2;
-		while (curr) {
+		ListNode *dummy1 = new ListNode(0);
+		ListNode *dummy2 = new ListNode(0);
+		ListNode *curr = head, *p = dummy1, *q = dummy2;
+		while (curr != nullptr) {
 			if (curr->val < x) {
 				p->next = curr;
 				p = p->next;
@@ -28,12 +27,13 @@ public:
 			}
 			curr = curr->next;
 		}
-		q->next = nullptr;  //！不要忘记
-		p->next = dummy2.next;
-		return dummy1.next;
+		q->next = nullptr;			//不要忘记这句！
+		p->next = dummy2->next;
+		return dummy1->next;
 	}
 };
 
+#if 0
 int main() {
 	ListNode n0(1);
 	ListNode n1(4);
@@ -60,3 +60,4 @@ int main() {
 	}
 	return 0;
 }
+#endif

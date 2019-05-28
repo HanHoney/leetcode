@@ -1,6 +1,6 @@
 //59. Spiral Matrix II
 //Medium
-//æ¨¡æ‹Ÿ
+//Ä£Äâ
 
 #include <iostream>
 #include <vector>
@@ -34,18 +34,18 @@ public:
 		return ret;
 	}
 };
-
-int main() {
-	int n;
-	while (cin >> n) {
-		Solution s;
-		vector<vector<int>> ret = s.generateMatrix(n);
-		for (auto &v : ret) {
-			for (auto num : v) {
-				cout << num << " ";
-			}
-			cout << endl;
-		}
-	}
-	return 0;
-}
+//
+//int main() {
+//	int n;
+//	while (cin >> n) {
+//		Solution s;
+//		vector<vector<int>> ret = s.generateMatrix(n);
+//		for (auto &v : ret) {
+//			for (auto num : v) {
+//				cout << num << " ";
+//			}
+//			cout << endl;
+//		}
+//	}
+//	return 0;
+//}

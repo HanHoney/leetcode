@@ -10,23 +10,19 @@ using namespace std;
 class Solution {
 public:
 	vector<string> generateParenthesis(int n) {
-		if (n == 0) return vector<string>(1,"");
-		if (n == 1) return vector<string>(1, "()");
 		vector<string> ret;
-		string s;
-		generate(s, n, n, ret);
+		string path = "";
+		dfs(ret, path, n, n);
 		return ret;
 	}
-	void generate(string str,int left,int right,vector<string> &res) {  //无法再添加括号时，不再调用generate，递归出口。
-		if (left == 0 && right == 0) {   
-			res.push_back(str);
+	void dfs(vector<string>& ret, string path, int left, int right) {
+		if (left < 0 || left > right) return;
+		if (left == 0 && right == 0) {
+			ret.emplace_back(path);
 		}
-		if (left > 0) {  //加左括号
-			generate(str + "(", left - 1, right, res);
-		}
-		if (right > 0 && right > left) {   //加右括号
-			generate(str + ")", left, right - 1, res);
-		}
-		return;   //可省略，写出来逻辑更清晰~
+		path.push_back('(');
+		dfs(ret, path, left - 1, right);
+		path.back() = ')';
+		dfs(ret, path, left, right - 1);
 	}
 };

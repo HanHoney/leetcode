@@ -83,12 +83,12 @@ public:
 	}
 
 };
-
-int main() {
-	vector<vector<char>> m{ {'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'} };
-	Solution s;
-	cout << s.maximalRectangle(m) << endl;
-	cout << s.maximalRectangle1(m) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<vector<char>> m{ {'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'} };
+//	Solution s;
+//	cout << s.maximalRectangle(m) << endl;
+//	cout << s.maximalRectangle1(m) << endl;
+//	system("pause");
+//	return 0;
+//}

@@ -1,11 +1,11 @@
 // 32. Longest Valid Parentheses
 // Hard
 /***********
-â‘  Brute Force (TLE)
+¢Ù Brute Force TLE
 	TC:O(n^3)	SC:O(n)
-â‘¡ DP
+¢Ú DP
 	TC:O(n)		SC:O(n)		
-â‘¢ Stackã€æœªå®Œå¾…ç»­ã€‘
+¢Û Stack¡¾Î´Íê´ıĞø¡¿
 	TC:O(n)		SC:O(n)
 ***********/
 
@@ -20,7 +20,6 @@ using namespace std;
 class Solution {
 public:
 	/*
-	//æš´åŠ›
 	bool isValid(string s) {
 		stack<char> st;
 		for (auto c : s) {
@@ -61,12 +60,12 @@ public:
 		return ret;
 	}
 };
-
-int main() {
-	string str;
-	while (cin >> str) {
-		Solution s;
-		cout << s.longestValidParentheses(str) << endl;
-	}
-	return 0;
-}
+//
+//int main() {
+//	string str;
+//	while (cin >> str) {
+//		Solution s;
+//		cout << s.longestValidParentheses(str) << endl;
+//	}
+//	return 0;
+//}
