@@ -42,11 +42,11 @@ public:
 	}
 };
 
-
-int main() {
-	vector<int> nums{ 0,-1,-4,1,-3,-2 };
-	Solution s;
-	cout << s.maxProduct1(nums) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ 0,-1,-4,1,-3,-2 };
+//	Solution s;
+//	cout << s.maxProduct1(nums) << endl;
+//	system("pause");
+//	return 0;
+//}

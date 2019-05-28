@@ -38,23 +38,23 @@ private:
 	}
 };
 
-
-int main() {
-	vector<vector<char>> grid1{
-	{'1','1','1','1','0'},
-	{'1','1','0','1','0'},
-	{'1','1','0','0','0'},
-	{'0','0','0','0','0'},
-	};
-	vector<vector<char>> grid2{
-	{ '1','1','0','0','0' },
-	{ '1','1','0','0','0' },
-	{ '0','0','1','0','0' },
-	{ '0','0','0','1','1' },
-	};
-	Solution s;
-	cout << s.numIslands(grid1) << endl;
-	cout << s.numIslands(grid2) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<vector<char>> grid1{
+//	{'1','1','1','1','0'},
+//	{'1','1','0','1','0'},
+//	{'1','1','0','0','0'},
+//	{'0','0','0','0','0'},
+//	};
+//	vector<vector<char>> grid2{
+//	{ '1','1','0','0','0' },
+//	{ '1','1','0','0','0' },
+//	{ '0','0','1','0','0' },
+//	{ '0','0','0','1','1' },
+//	};
+//	Solution s;
+//	cout << s.numIslands(grid1) << endl;
+//	cout << s.numIslands(grid2) << endl;
+//	system("pause");
+//	return 0;
+//}

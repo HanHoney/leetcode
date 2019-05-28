@@ -25,16 +25,16 @@ public:
 		return s2.top();
 	}
 };
-
-int main() {
-	MinStack ms;
-	ms.push(-2);
-	ms.push(0);
-	ms.push(-3);
-	cout << ms.getMin() << endl;
-	ms.pop();
-	cout << ms.top() << endl;
-	cout << ms.getMin() << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	MinStack ms;
+//	ms.push(-2);
+//	ms.push(0);
+//	ms.push(-3);
+//	cout << ms.getMin() << endl;
+//	ms.pop();
+//	cout << ms.top() << endl;
+//	cout << ms.getMin() << endl;
+//	system("pause");
+//	return 0;
+//}

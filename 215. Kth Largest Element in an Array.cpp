@@ -1,6 +1,6 @@
 //215. Kth Largest Element in an Array
 //Medium
-//①快排partition思想     ②sort排序	③大根堆	④小根堆
+//�ٿ���partition˼��	��sort����	�۴����	��С����
 
 #include <iostream>
 #include <vector>
@@ -29,20 +29,20 @@ public:
 		return nums[nums.size() - k];
 	}
 
-	//最大堆
+	//����
 	//TC:O(klogn)	SC:O(n)
 	int findKthLargest2(vector<int>& nums, int k) {
-		priority_queue<int> pq(nums.begin(), nums.end());		//默认最大堆，内部元素递增
+		priority_queue<int> pq(nums.begin(), nums.end());		//Ĭ�����ѣ��ڲ�Ԫ�ص���
 		for (int i = 0; i < k - 1; i++) {
 			pq.pop();
 		}
 		return pq.top();
 	}
 
-	//最小堆
+	//��С��
 	//TC:O(nlogk)	SC:O(k)
 	int findKthLargest3(vector<int>& nums, int k) {
-		priority_queue<int,vector<int>,greater<int>> pq;		//递减
+		priority_queue<int,vector<int>,greater<int>> pq;		//�ݼ�
 		for (int i = 0; i < k; i++) {
 			pq.push(nums[i]);
 		}
@@ -70,12 +70,12 @@ private:
 		return l;
 	}
 };
-
-int main() {
-	vector<int> nums{ 3,2,1,5,6,4,4,6,5 };
-	int k = 5;
-	Solution s;
-	cout << s.findKthLargest(nums, k) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ 3,2,1,5,6,4,4,6,5 };
+//	int k = 5;
+//	Solution s;
+//	cout << s.findKthLargest(nums, k) << endl;
+//	system("pause");
+//	return 0;
+//}

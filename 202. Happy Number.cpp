@@ -31,13 +31,13 @@ private:
 		return next;
 	}
 };
-
-int main() {
-	Solution s;
-	int n;
-	while (cin >> n) {
-		cout << s.isHappy(n) << endl;
-	}
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	Solution s;
+//	int n;
+//	while (cin >> n) {
+//		cout << s.isHappy(n) << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}

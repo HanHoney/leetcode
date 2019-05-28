@@ -1,7 +1,7 @@
 //128. Longest Consecutive Sequence 
-//æœ€é•¿è¿ç»­å­åºåˆ—
+//×î³¤Á¬Ğø×ÓĞòÁĞ
 //Hard
-//â‘ sort	â‘¡å“ˆå¸Œè¡¨(ç©ºé—´æ¢æ—¶é—´)
+//¢Ùsort	¢Ú¹şÏ£±í(¿Õ¼ä»»Ê±¼ä)
 
 /****************************
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
@@ -24,14 +24,14 @@ using namespace std;
 class Solution {
 public:
 
-	//â‘  TC:O(nlogn)	SC:O(1)
+	//¢Ù TC:O(nlogn)	SC:O(1)
 	int longestConsecutive(vector<int>& nums) {
 		if (nums.empty()) return 0;
 		sort(nums.begin(), nums.end());
 		int ret = 1;
 		int tmp = 1;
 		for (int i = 1; i < nums.size(); i++) {
-			if (nums[i] != nums[i - 1]) {	//é‡å¤çš„å…ƒç´ è·³è¿‡
+			if (nums[i] != nums[i - 1]) {	//ÖØ¸´µÄÔªËØÌø¹ı
 				if (nums[i] == nums[i - 1] + 1) {
 					tmp++;
 				}
@@ -46,14 +46,15 @@ public:
 	}
 
 
-	//â‘¡ TC:O(n)	SC:O(n)
+	//¢Ú TC:O(n)	SC:O(n)
+	//unordered_map¿ÉÒÔÊ¹ÓÃ[]À´½øĞĞinsert²Ù×÷£¬intÄ¬ÈÏÖµÎª0
 	int longestConsecutive1(vector<int>& nums) {
-		unordered_map<int, int> map;	//åŸºäºå“ˆå¸Œè¡¨
+		unordered_map<int, int> map;	//»ùÓÚ¹şÏ£±í
 		int ret = 0;
 		for (int i : nums) {
 			if (map[i] == 0) {
 				map[i] = map[i - 1] + map[i + 1] + 1;
-				map[i - map[i - 1]] = map[i];	//ä¼ é€’åˆ°ä¸¤ç«¯
+				map[i - map[i - 1]] = map[i];	//´«µİµ½Á½¶Ë
 				map[i + map[i + 1]] = map[i];
 				ret = max(ret, map[i]);
 			}
@@ -61,13 +62,15 @@ public:
 		return ret;
 	}
 
+
 	int longestConsecutive2(vector<int>& nums) {
 		if (nums.size() <= 1) return nums.size();
 		unordered_set<int> s;
-		for (auto i : nums) {
+		for (auto i : nums) {	//ÌŞ³ıÖØ¸´ÔªËØ
 			s.insert(i);
 		}
-		int ret = 0;
+		int ret = 1;
+		//ÏòÁ½±ßÑÓÉì£¬Í¬Ê±ÒÆ³ıÒÑ¾­Ê¹ÓÃµÄÔªËØ
 		for (auto i : nums) {
 			int tmp = 1;
 			for (int j = i - 1; s.find(j) != s.end(); j--) {
@@ -85,15 +88,13 @@ public:
 	
 };
 
-int main() {
-	vector<int> nums{ 9,1,4,7,3,-1,0,5,8,-1,6 };
-	Solution s;
-	cout << s.longestConsecutive(nums) << endl;
-	cout << s.longestConsecutive1(nums) << endl;
-	cout << s.longestConsecutive2(nums) << endl;
-	system("pause");
-	return 0;
-}
-
-
-
+//
+//int main() {
+//	vector<int> nums{ 9,1,4,7,3,-1,0,5,8,-1,6 };
+//	Solution s;
+//	cout << s.longestConsecutive(nums) << endl;
+//	cout << s.longestConsecutive1(nums) << endl;
+//	cout << s.longestConsecutive2(nums) << endl;
+//	system("pause");
+//	return 0;
+//}

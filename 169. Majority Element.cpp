@@ -9,7 +9,7 @@ using namespace std;
 class Solution {
 public:
 
-	//该数字出现次数减去其他数字出现次数>0
+	//该数字出现次数减去其他数字出现次数 > 0
 	//TC:O(n)	SC:O(1)
 	int majorityElement(vector<int>& nums) {
 		int ret;
@@ -35,11 +35,12 @@ public:
 	}
 };
 
-int main() {
-	vector<int> nums{ 1,2,3,2,4,2,1,2,2 };
-	Solution s;
-	cout << s.majorityElement(nums) << endl;
-	cout << s.majorityElement1(nums) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ 1,2,3,2,4,2,1,2,2 };
+//	Solution s;
+//	cout << s.majorityElement(nums) << endl;
+//	cout << s.majorityElement1(nums) << endl;
+//	system("pause");
+//	return 0;
+//}

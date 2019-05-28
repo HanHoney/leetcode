@@ -58,13 +58,13 @@ public:
 		return triangle[0][0];
 	}
 };
-
-int main() {
-	vector<vector<int>> tr{ {2},{3,4},{6,5,7},{4,1,8,3} };
-	Solution s;
-	cout << s.minimumTotal(tr) << endl;
-	cout << s.minimumTotal1(tr) << endl;
-	cout << s.minimumTotal2(tr) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<vector<int>> tr{ {2},{3,4},{6,5,7},{4,1,8,3} };
+//	Solution s;
+//	cout << s.minimumTotal(tr) << endl;
+//	cout << s.minimumTotal1(tr) << endl;
+//	cout << s.minimumTotal2(tr) << endl;
+//	system("pause");
+//	return 0;
+//}
