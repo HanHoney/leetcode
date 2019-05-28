@@ -39,7 +39,7 @@ public:
 			s.push(i);
 		}
 		for (int i = 0; i < n; ++i) {
-			ret = (ret + (i - left[i])*(right[i] - i) % mod*A[i] % mod) % mod;
+			ret = (ret + (i - left[i])*(right[i] - i) % mod * A[i] % mod) % mod;
 		}
 		return ret;
 	}

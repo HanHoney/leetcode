@@ -23,12 +23,12 @@ public:
 		return res.back();
 	}
 };
-
-int main() {
-	Solution s;
-	int n;
-	while (cin >> n) {
-		cout << s.nthUglyNumber(n) << endl;
-	}
-	return 0;
-}
+//
+//int main() {
+//	Solution s;
+//	int n;
+//	while (cin >> n) {
+//		cout << s.nthUglyNumber(n) << endl;
+//	}
+//	return 0;
+//}

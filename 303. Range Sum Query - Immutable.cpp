@@ -20,13 +20,13 @@ private:
 	vector<int> sums;
 };
 
-
-int main() {
-	vector<int> nums{ -2,0,3,-5,2,-1 };
-	NumArray arr(nums);
-	cout << arr.sumRange(0, 2) << endl;
-	cout << arr.sumRange(2, 5) << endl;
-	cout << arr.sumRange(0, 5) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums{ -2,0,3,-5,2,-1 };
+//	NumArray arr(nums);
+//	cout << arr.sumRange(0, 2) << endl;
+//	cout << arr.sumRange(2, 5) << endl;
+//	cout << arr.sumRange(0, 5) << endl;
+//	system("pause");
+//	return 0;
+//}

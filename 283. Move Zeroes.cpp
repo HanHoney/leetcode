@@ -36,15 +36,15 @@ public:
 	}
 	*/
 };
-
-int main() {
-	Solution s;
-	vector<int> nums{ 0,1,0,3,12 };
-	s.moveZeroes(nums);
-	for (auto n : nums) {
-		cout << n << " ";
-	}
-	cout << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	Solution s;
+//	vector<int> nums{ 0,1,0,3,12 };
+//	s.moveZeroes(nums);
+//	for (auto n : nums) {
+//		cout << n << " ";
+//	}
+//	cout << endl;
+//	system("pause");
+//	return 0;
+//}

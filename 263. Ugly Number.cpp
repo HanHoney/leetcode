@@ -21,12 +21,13 @@ public:
 	}
 };
 
-int main() {
-	Solution s;
-	cout << s.isUgly(1) << endl;
-	cout << s.isUgly(6) << endl;
-	cout << s.isUgly(8) << endl;
-	cout << s.isUgly(14) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	Solution s;
+//	cout << s.isUgly(1) << endl;
+//	cout << s.isUgly(6) << endl;
+//	cout << s.isUgly(8) << endl;
+//	cout << s.isUgly(14) << endl;
+//	system("pause");
+//	return 0;
+//}

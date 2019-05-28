@@ -1,7 +1,7 @@
 //234. Palindrome Linked List
 //Easy
 //two pointers
-//TC:O(n)  SC:O(1)
+//翻转后半个链表，匹配   TC:O(n)	 SC:O(1)
 
 
 #include <iostream>
@@ -56,21 +56,21 @@ private:
 		return prev;
 	}
 };
-
-int main() {
-	ListNode n0(0);
-	ListNode n1(1);
-	ListNode n2(2);
-	ListNode n3(2);
-	ListNode n4(1);
-	ListNode n5(0);
-	n0.next = &n1;
-	n1.next = &n2;
-	n2.next = &n3;
-	n3.next = &n4;
-	n4.next = &n5;
-	Solution s;
-	cout << s.isPalindrome(&n0) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	ListNode n0(0);
+//	ListNode n1(1);
+//	ListNode n2(2);
+//	ListNode n3(2);
+//	ListNode n4(1);
+//	ListNode n5(0);
+//	n0.next = &n1;
+//	n1.next = &n2;
+//	n2.next = &n3;
+//	n3.next = &n4;
+//	n4.next = &n5;
+//	Solution s;
+//	cout << s.isPalindrome(&n0) << endl;
+//	system("pause");
+//	return 0;
+//}

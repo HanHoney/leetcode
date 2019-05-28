@@ -26,13 +26,14 @@ public:
 	}
 };
 
-int main() {
-	vector<int> primes{ 2,7,13,19 };
-	int n;
-	Solution s;
-	while (cin >> n) {
-		cout << s.nthSuperUglyNumber(n, primes) << endl;
-	}
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	vector<int> primes{ 2,7,13,19 };
+//	int n;
+//	Solution s;
+//	while (cin >> n) {
+//		cout << s.nthSuperUglyNumber(n, primes) << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}

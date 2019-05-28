@@ -1,8 +1,8 @@
 //240. Search a 2D Matrix II
 //Medium
-//ç±»ä¼¼é¢˜ç›®ã€074ã€‘
+//ÀàËÆÌâÄ¿¡¾074¡¿
 //TC:O(m+n)		SC:O(1)
-//ç”±äºä¸åŒè¡Œä¸åŒåˆ—çš„å…ƒç´ å…³ç³»ä¸ç¡®å®šï¼Œæ•…ä¸èƒ½ä½¿ç”¨äºŒåˆ†æŸ¥æ‰¾ã€‚
+//²»ÄÜ¶ş·Ö²éÕÒ£¬Ö»ÄÜÃ¿´Î¶ÔĞĞ»òÁĞ×ö++»òÕß--µÄ¸Ä±ä
 
 #include <iostream>
 #include <vector>
@@ -11,7 +11,7 @@ using namespace std;
 class Solution {
 public:
 	
-	//ä»å³ä¸Šè§’å¼€å§‹
+	//´ÓÓÒÉÏ½Ç¿ªÊ¼
 	bool searchMatrix(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = 0, col = matrix[0].size() - 1;
@@ -23,7 +23,7 @@ public:
 		return false;
 	}
 
-	//ä»å·¦ä¸‹è§’å¼€å§‹
+	//´Ó×óÏÂ½Ç¿ªÊ¼
 	bool serachMatrix1(vector<vector<int>>& matrix, int target) {
 		if (matrix.empty() || matrix[0].empty()) return false;
 		int row = matrix.size() - 1, col = 0;
@@ -35,14 +35,14 @@ public:
 		return false;
 	}
 };
-
-int main() {
-	int tar1 = 16;
-	int tar2 = 25;
-	vector<vector<int>> vec{ {1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30} };
-	Solution s;
-	cout << s.searchMatrix(vec, tar1) << endl;
-	cout << s.searchMatrix(vec, tar2) << endl;
-	system("pause");
-	return 0;
-}
+//
+//int main() {
+//	int tar1 = 16;
+//	int tar2 = 25;
+//	vector<vector<int>> vec{ {1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30} };
+//	Solution s;
+//	cout << s.searchMatrix(vec, tar1) << endl;
+//	cout << s.searchMatrix(vec, tar2) << endl;
+//	system("pause");
+//	return 0;
+//}
